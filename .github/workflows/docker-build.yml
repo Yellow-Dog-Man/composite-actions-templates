@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       image_tag:
-        description: 'The tag you want applied to the Docker iamge.'
+        description: 'The tag you want applied to the Docker image.'
         required: false
         # Good enough for now, but we will need to accommodate for better tagging later
         # The 'latest' tag is generally nonstandard.
