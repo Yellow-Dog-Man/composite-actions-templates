@@ -34,7 +34,7 @@ on:
           description: 'Authentication token'
           required: true
 
-job:
+jobs:
   build-push:
     runs-on: ubuntu-latest
     
