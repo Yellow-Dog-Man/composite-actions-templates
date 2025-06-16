@@ -1,0 +1,45 @@
+name: Build a NuGet package and push it to the registry
+
+on:
+  workflow_call:
+    dotnet_version:
+      description: 'The verion of .NET to use. Defaults to 9.0.x'
+      required: false
+      default: '9.0.x'
+      type: string
+    dotnet_project:
+      description: 'The .NET project to build and publish.'
+      required: true
+      type: string
+    dotnet_build_path:
+      description: 'Build path of artifacts.'
+      required: false
+      default: '**/bin/Release/*.nupkg'
+      type: string
+    nuget_registry_url:
+      description: 'The URL of the NuGet registry. Defaults to nuget.org.'
+      default: 'https://api.nuget.org/v3/index.json'
+      type: string
+
+jobs:
+  nuget-publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ inputs.dotnet_version }}
+
+      - name: Restore project
+        run: dotnet restore ${{ inputs.project }}
+
+      - name: Build and pack project
+        run: dotnet pack -C Release ${{ inputs.project }}
+
+      - name: Push to NuGet registry
+        run: dotnet nuget push ${{ inputs.dotnet_build_path }} -k ${{ secrets.NUGET_TOKEN }} -s ${{ inputs.nuget_registry_url }}
