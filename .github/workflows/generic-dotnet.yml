@@ -1,0 +1,43 @@
+name: Build a .NET application
+
+on:
+  workflow_call:
+    inputs:
+      dotnet_version:
+        description: 'The version of .NET to use. Defaults to 9.0.x'
+        required: false
+        default: '9.0.x'
+        type: string
+      dotnet_project:
+        description: 'The .NET project to build.'
+        required: true
+        type: string
+      artifact_name:
+        description: 'The name of the artifact.'
+        required: true
+        type: string
+
+jobs:
+  build-dotnet:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ inputs.dotnet_version }}
+
+      - name: Restore dotnet project
+        run: dotnet restore ${{ inputs.dotnet_project }}
+
+      - name: Build dotnet project
+        run: dotnet build -c Release ${{ inputs.dotnet_project }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ inputs.dotnet_project }}/**/bin/**/
