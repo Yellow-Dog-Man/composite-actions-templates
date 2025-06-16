@@ -12,6 +12,11 @@ on:
         description: 'The .NET project to build.'
         required: true
         type: string
+      dotnet_build_path:
+        description: 'Build path of artifacts.'
+        required: false
+        default: '**/bin/Release/*.dll'
+        type: string
       artifact_name:
         description: 'The name of the artifact.'
         required: true
@@ -40,4 +45,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.artifact_name }}
-          path: ${{ inputs.dotnet_project }}/**/bin/**/
+          path: ${{ inputs.dotnet_build_path }}
