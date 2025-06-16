@@ -19,6 +19,7 @@ on:
     nuget_registry_url:
       description: 'The URL of the NuGet registry. Defaults to nuget.org.'
       default: 'https://api.nuget.org/v3/index.json'
+      required: false
       type: string
 
 jobs:
