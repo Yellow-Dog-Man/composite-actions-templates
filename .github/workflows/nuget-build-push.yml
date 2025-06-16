@@ -17,7 +17,7 @@ on:
       default: '**/bin/Release/*.nupkg'
       type: string
     nuget_registry_url:
-      description: 'The URL of the NuGet registry. Defaults to nuget.org.'
+      description: 'The URL of the NuGet registry. Defaults to the YDMS one.'
       default: 'https://nuget.pkg.github.com/Yellow-Dog-Man/index.json'
       required: false
       type: string
