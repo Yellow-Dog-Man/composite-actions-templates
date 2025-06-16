@@ -47,4 +47,4 @@ jobs:
         run: dotnet pack -C Release ${{ inputs.project }}
 
       - name: Push to NuGet registry
-        run: dotnet nuget push ${{ inputs.dotnet_build_path }} -k ${{ secrets.NUGET_LOGIN_TOKEN }} -s ${{ inputs.nuget_registry_url }}
+        run: dotnet nuget push ${{ inputs.dotnet_build_path }} -k ${{ secrets.NUGET_LOGIN_TOKEN }} -s ${{ inputs.nuget_registry_url }} --source "github"
