@@ -1,0 +1,39 @@
+name: Generic CMake build
+
+on:
+  workflow_call:
+    cmake_options:
+      description: 'CMake build options'
+      required: false
+      default: ''
+      type: string
+    artifact_name:
+      description: 'The name of the build artifact'
+      required: false
+      default: 'linux-dist'
+      type: string
+
+jobs:
+  cmake-build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+        echo "wps=${{ github.workspace }}/builddir" >> "$GITHUB_ENV"
+        mkdir -p ${{ github.workspace }}/builddir
+
+      - working-directory: ${{ env.wps }}
+        run: cmake ${{ inputs.cmake_options }} ..
+
+      - working-directory: ${{ env.wps }}
+        run: make -j4
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ env.wps }}/**/*.so
