@@ -23,9 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: |
-        echo "wps=${{ github.workspace }}/builddir" >> "$GITHUB_ENV"
-        mkdir -p ${{ github.workspace }}/builddir
+      - name: Set outdir
+        run: |
+          echo "wps=${{ github.workspace }}/builddir" >> "$GITHUB_ENV"
+          mkdir -p ${{ github.workspace }}/builddir
 
       - working-directory: ${{ env.wps }}
         run: cmake ${{ inputs.cmake_options }} ..
