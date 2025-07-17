@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  text-dotnet:
+  test-dotnet:
     runs-on: ubuntu-latest
 
     permissions:
