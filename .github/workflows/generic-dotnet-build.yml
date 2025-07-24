@@ -26,6 +26,11 @@ on:
         description: 'The name of the artifact.'
         required: true
         type: string
+      restore:
+        description: 'Run the restore step.'
+        required: false
+        default: 'false'
+        type: string
 
 jobs:
   build-dotnet:
@@ -42,6 +47,7 @@ jobs:
           dotnet-version: ${{ inputs.dotnet_version }}
 
       - name: Restore dotnet project
+        if: ${{ inputs.restore == 'true' }}
         run: dotnet restore ${{ inputs.dotnet_project }}
 
       - name: Build dotnet project
