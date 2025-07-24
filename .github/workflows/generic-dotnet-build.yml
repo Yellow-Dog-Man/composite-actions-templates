@@ -17,6 +17,11 @@ on:
         required: false
         default: '**/bin/Release/*.dll'
         type: string
+      dotnet_build_args:
+        description: 'Additional arguments to pass onto the build command.'
+        required: false
+        default: ''
+        type: string
       artifact_name:
         description: 'The name of the artifact.'
         required: true
@@ -40,7 +45,7 @@ jobs:
         run: dotnet restore ${{ inputs.dotnet_project }}
 
       - name: Build dotnet project
-        run: dotnet build -c Release ${{ inputs.dotnet_project }}
+        run: dotnet build ${{ inputs.dotnet_build_args }} -c Release ${{ inputs.dotnet_project }}
 
       - uses: actions/upload-artifact@v4
         with:
