@@ -2,16 +2,17 @@ name: Generic CMake build
 
 on:
   workflow_call:
-    cmake_options:
-      description: 'CMake build options'
-      required: false
-      default: ''
-      type: string
-    artifact_name:
-      description: 'The name of the build artifact'
-      required: false
-      default: 'linux-dist'
-      type: string
+    inputs:
+      cmake_options:
+        description: 'CMake build options'
+        required: false
+        default: ''
+        type: string
+      artifact_name:
+        description: 'The name of the build artifact'
+        required: false
+        default: 'linux-dist'
+        type: string
 
 jobs:
   cmake-build:
