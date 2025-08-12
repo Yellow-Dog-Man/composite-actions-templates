@@ -7,11 +7,11 @@ on:
       required: false
       default: ''
       type: string
-  artifact_name:
-    description: 'The name of the build artifact'
-    required: false
-    default: 'linux-dist'
-    type: string
+    artifact_name:
+      description: 'The name of the build artifact'
+      required: false
+      default: 'linux-dist'
+      type: string
 
 jobs:
   cmake-build:
