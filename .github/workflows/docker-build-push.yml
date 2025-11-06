@@ -29,11 +29,9 @@ on:
         required: false
         default: 'ghcr.io'
         type: string
-      secrets:
-        LOGIN_TOKEN:
-          description: 'Authentication token'
-          required: true
-          type: string
+    secrets:
+      LOGIN_TOKEN:
+        description: 'Authentication token'
 
 jobs:
   build-push:
