@@ -47,13 +47,13 @@ jobs:
           dotnet-version: ${{ inputs.dotnet_version }}
 
       - name: Restore project
-        run: dotnet restore ${{ inputs.project }}
+        run: dotnet restore ${{ inputs.dotnet_project }}
 
       - name: Build project
-        run: dotnet build -C Release ${{ inputs.additional_cli_options }} ${{ inputs.project }}
+        run: dotnet build -C Release ${{ inputs.additional_cli_options }} ${{ inputs.dotnet_project }}
 
       - name: Pack project
-        run: dotnet pack -C Release ${{ inputs.additional_cli_options }} ${{ inputs.project }}
+        run: dotnet pack -C Release ${{ inputs.additional_cli_options }} ${{ inputs.dotnet_project }}
 
       - name: Push to NuGet registry
         run: dotnet nuget push ${{ inputs.dotnet_build_path }} -k ${{ secrets.NUGET_LOGIN_TOKEN }} -s ${{ inputs.nuget_registry_url }} --source "github"
