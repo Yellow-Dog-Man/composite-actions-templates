@@ -30,6 +30,7 @@ on:
       NUGET_LOGIN_TOKEN:
         description: 'A push token to authenticate against the NuGet registry.'
         required: true
+        type: string
 
 jobs:
   nuget-publish:
