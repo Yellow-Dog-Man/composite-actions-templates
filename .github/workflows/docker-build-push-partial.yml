@@ -33,7 +33,6 @@ on:
       LOGIN_TOKEN:
         description: 'Authentication token'
         required: true
-        type: string
 
 jobs:
   build-push:
