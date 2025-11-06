@@ -21,6 +21,11 @@ on:
       default: 'https://nuget.pkg.github.com/Yellow-Dog-Man/index.json'
       required: false
       type: string
+    additional_cli_options:
+      required: false
+      default: ''
+      type: string
+      description: 'Additional command line arguments to be passed to .NET'
     secrets:
       NUGET_LOGIN_TOKEN:
         description: 'A push token to authenticate against the NuGet registry.'
@@ -43,8 +48,11 @@ jobs:
       - name: Restore project
         run: dotnet restore ${{ inputs.project }}
 
-      - name: Build and pack project
-        run: dotnet pack -C Release ${{ inputs.project }}
+      - name: Build project
+        run: dotnet build -C Release ${{ inputs.additional_cli_options }} ${{ inputs.project }}
+
+      - name: Pack project
+        run: dotnet pack -C Release ${{ inputs.additional_cli_options }} ${{ inputs.project }}
 
       - name: Push to NuGet registry
         run: dotnet nuget push ${{ inputs.dotnet_build_path }} -k ${{ secrets.NUGET_LOGIN_TOKEN }} -s ${{ inputs.nuget_registry_url }} --source "github"
