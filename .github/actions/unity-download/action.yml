@@ -1,0 +1,41 @@
+name: 'Download and cache Unity Runtime'
+
+inputs:
+  version:
+    description: 'The version of Unity to download'
+    required: false
+    default: '2019.4.19f1'
+  build-target:
+    description: 'Build target for Unity'
+    required: false
+    default: 'StandaloneWindows64'
+  modules:
+    description: 'Modules to install, use comma separated list'
+    required: false
+    default: "['windows-server', 'universal-windows-platform']"
+
+runs:
+  using: composite
+  steps:
+    - name: 'Get Unity from cache'
+      uses: actions/cache@v5
+      id: cache
+      with:
+        path: 'C:\Program Files\Unity\'
+        key: ${{ inputs.version }}
+
+
+    - name: 'setup Unity'
+      if: steps.cache.outputs.cache-hit != 'true'
+      uses: buildalon/unity-setup@v2
+      with:
+        unity-version: ${{ inputs.version }}
+        build-targets: ${{ inputs.build-target }}
+        modules: ${{ inputs.modules }}
+
+    - name: 'Cache Unity'
+      if: steps.cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v5
+      with:
+        path: 'C:\Program Files\Unity\'
+        key: ${{ inputs.version }}
