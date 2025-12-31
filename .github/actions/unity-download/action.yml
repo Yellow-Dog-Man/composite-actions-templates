@@ -12,7 +12,9 @@ inputs:
   modules:
     description: 'Modules to install, use comma separated list'
     required: false
-    default: "['windows-server', 'universal-windows-platform']"
+    default: |
+      windows-server
+      universal-windows-platform
 
 outputs:
   unity-editor-path:
