@@ -16,8 +16,7 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home:
-      - Overview: index.md
+  - Home: index.md
   - Composite Actions:
       - Unity Download: composite/unity-download.md
       - CMake Build: composite/cmake-build.md
