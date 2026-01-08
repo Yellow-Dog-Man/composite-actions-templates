@@ -1,0 +1,39 @@
+name: '.NET Build'
+description: 'Builds a project with .NET.'
+
+inputs:
+  dotnet-version:
+    description: '.NET version to use'
+    default: '10.0.x'
+    required: false
+  dotnet-build-args:
+    description: 'Additional args to pass to the .NET build process'
+    default: ''
+    required: false
+  dotnet-build-type:
+    description: 'Type of build, pack or build.'
+    default: 'build'
+    required: false
+  dotnet-project-path:
+    description: 'Path to the .NET project to build.'
+    default: '.'
+    required: false
+
+runs:
+  using: composite
+
+  steps:
+    - name: 'Install .NET'
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: ${{ inputs.dotnet-version }}
+
+    - name: 'Build Solution'
+      shell: bash
+      if: ${{ inputs.dotnet-build-type == 'build' }}
+      run: docker build -c Release ${{ inputs.dotnet-build-args }} ${{ inputs.dotnet-project-path }}
+
+    - name: 'Pack Solution for NuGET'
+      shell: bash
+      if: ${{ inputs.dotnet-build-type == 'pack' }}
+      run: dotnet pack -c Release ${{ inputs.dotnet-build-args }} ${{ inputs.dotnet-project-path }}
