@@ -894,7 +894,7 @@
 
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">.NET</span><span class="nv"> </span><span class="s">Solution&#39;</span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.github/actions/dotnet-build</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build@main</span>
 <span class="w">      </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">dotnet-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">inputs.dotnet-version</span><span class="nv"> </span><span class="s">}}&#39;</span>
 <span class="w">        </span><span class="nt">dotnet-build-args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">inputs.dotnet-build-args</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">${{</span><span class="nv"> </span><span class="s">inputs.dotnet-nuget-out-path</span><span class="nv"> </span><span class="s">}}&#39;</span>
