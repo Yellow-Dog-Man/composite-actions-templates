@@ -44,7 +44,6 @@ plugins:
             parameters_anchors: false
             parameters_groups: false
             parameters_group_title_row: true
-            signature_version: ref
             show_source: true
             show_outputs: true
             show_secrets: true
