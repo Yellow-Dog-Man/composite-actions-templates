@@ -41,7 +41,8 @@ plugins:
         github:
           options:
             signature_show_permissions: true
-            signature_version: ref
+            signature_version: string
+            signature_version_string: !!python/object/apply:os.getenv ["GITHUB_REF_NAME", "main"]
             show_toc_entry: false
             heading_level: 3
             parameters_anchors: false
