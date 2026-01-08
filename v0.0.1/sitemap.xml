@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/cmake-build/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/docker-build-push/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/dotnet-build-push-nuget/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/dotnet-build/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/dotnet-tests-run/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/composite/unity-download/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/v0.0.1/workflows/secret-detection/</loc>
+         <lastmod>2026-01-08</lastmod>
+    </url>
+</urlset>
