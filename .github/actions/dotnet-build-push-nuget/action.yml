@@ -1,0 +1,42 @@
+name: '.NET Build Push NuGet'
+description: 'Builds the Solution then pushes the results to a NuGet registry'
+
+inputs:
+  dotnet-version:
+    description: '.NET version to use'
+    default: '10.0.x'
+    required: false
+  dotnet-build-args:
+    description: 'Additional args to pass to the .NET build process'
+    default: ''
+    required: false
+  dotnet-project-path:
+    description: 'Path to the .NET project to build.'
+    default: '.'
+    required: false
+  dotnet-nuget-out-path:
+    description: 'Path under which Nugets will be put after the build.'
+    default: '${{ github.workspace }}/nupkgs'
+    required: false
+  dotnet-nuget-registry-url:
+    description: 'Publishing URL of the NuGet registry.'
+    default: 'https://api.nuget.org/v3/index.json'
+    required: false
+  dotnet-nuget-auth-token:
+    description: 'Authentication token for the NuGet registry.'
+
+runs:
+  using: composite
+
+  steps:
+    - name: 'Build .NET Solution'
+      uses: ./.github/actions/dotnet-build
+      with:
+        dotnet-version: '${{ inputs.dotnet-version }}'
+        dotnet-build-args: '${{ inputs.dotnet-build-args }} -o ${{ inputs.dotnet-nuget-out-path }}'
+        dotnet-build-type: 'pack'
+        dotnet-project-path: '${{ inputs.dotnet-project-path }}'
+
+    - name: 'Publish package to registry'
+      shell: bash
+      run: dotnet nuget push ${{ inputs.dotnet-nuget-out-path }}/*.nupkg -k ${{ inputs.dotnet-nuget-auth-token }} -s ${{ inputs.dotnet-nuget-registry-url }}
