@@ -56,3 +56,4 @@ extra:
       link: https://github.com/Yellow-Dog-Man/
   version:
     provider: mike
+    default: main
