@@ -42,8 +42,8 @@ jobs:
 
       - name: 'Build documentation'
         run: |
-          mike set-default main
           mike deploy ${{ github.ref_name }}
+          mike set-default main
 
       - name: 'Push built branch to repo'
         run: git push origin gh-pages
