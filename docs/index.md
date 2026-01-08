@@ -4,4 +4,11 @@ This is the documentation for the GitHub Composite actions currently being in us
 
 ## Table of Contents
 
+### Composite Actions
 
+- [Unity Download](composite/unity-download.md)
+- [CMake Build](composite/cmake-build.md)
+- [Docker Build Push](composite/docker-build-push.md)
+- [.NET Build](composite/dotnet-build.md)
+- [.NET Build Push](composite/dotnet-build-push-nuget.md)
+- [.NET Run Tests](composite/dotnet-tests-run.md)
