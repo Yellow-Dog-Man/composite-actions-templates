@@ -6,4 +6,3 @@ Due to its heavy nature, it features heavy caching and will only download Unity 
 This action is due to be deprecated in the future as we move away from Unity.
 
 ::: .github/actions/unity-download/
-    handler: github
