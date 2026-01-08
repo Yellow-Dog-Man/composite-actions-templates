@@ -2,4 +2,4 @@
 
 This Action builds then pushes a Docker container from the repository.
 
-::: .github/actions/docker-build-push/
+::: .github/actions/docker-build-push
