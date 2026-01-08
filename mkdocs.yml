@@ -9,6 +9,7 @@ nav:
   - Composite Actions:
       - Unity Download: composite/unity-download.md
       - CMake Build: composite/cmake-build.md
+      - Docker Build Push: composite/docker-build-push.md
 
 plugins:
   - mkdocstrings:
