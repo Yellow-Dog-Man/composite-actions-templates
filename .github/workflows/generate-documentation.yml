@@ -4,30 +4,33 @@ on:
   push:
     branches:
       - main
+  release:
+    types:
+      - published
 
 permissions:
-  contents: read
-  pages: write
+  contents: write
   id-token: write
 
 jobs:
   deploy:
     name: 'Generate Mkdocs docs'
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
 
-    steps:
-      - name: 'Configure GitHub pages'
-        uses: actions/configure-pages@v5
+    env:
+      GIT_COMMITTER_NAME: 'github-actions[bot]'
+      GIT_COMMITTER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com'
 
+    steps:
       - name: 'Checkout repository'
         uses: actions/checkout@v6
         with:
           fetch-depth: '1'
+          fetch-tags: 'true'
+
+      - name: 'Fetch all'
+        run: git fetch --all
 
       - name: 'Install Python'
         uses: actions/setup-python@v6
@@ -37,14 +40,10 @@ jobs:
       - name: 'Install dependencies'
         run: pip install -r requirements.txt
 
-      - name: 'Build Zensical docs'
-        run: mkdocs build
+      - name: 'Build documentation'
+        run: |
+          mike set-default main
+          mike deploy ${{ github.ref_name }}
 
-      - name: 'Upload built artifact to GitHub pages'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: site
-
-      - name: 'Deploy GitHub pages to production'
-        uses: actions/deploy-pages@v4
-        id: deployment
+      - name: 'Push built branch to repo'
+        run: git push origin gh-pages
