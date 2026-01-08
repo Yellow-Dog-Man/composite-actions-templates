@@ -31,7 +31,7 @@ runs:
 
   steps:
     - name: 'Build .NET Solution'
-      uses: ./.github/actions/dotnet-build
+      uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build@main
       with:
         dotnet-version: '${{ inputs.dotnet-version }}'
         dotnet-build-args: '${{ inputs.dotnet-build-args }} -o ${{ inputs.dotnet-nuget-out-path }}'
