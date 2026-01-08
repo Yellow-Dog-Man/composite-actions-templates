@@ -33,12 +33,15 @@ nav:
       - Secret Detection: workflows/secret-detection.md
 
 plugins:
+  - search
+  - autorefs
   - mkdocstrings:
       default_handler: github
       handlers:
         github:
           options:
-            signature_repository: Yellow-Dog-Man/composite-actions-templates
+            signature_show_permissions: true
+            signature_version: ref
             show_toc_entry: false
             heading_level: 3
             parameters_anchors: false

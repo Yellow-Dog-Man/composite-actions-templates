@@ -26,10 +26,7 @@ jobs:
       - name: 'Checkout repository'
         uses: actions/checkout@v6
         with:
-          fetch-depth: '1'
-
-      - name: 'Fetch all'
-        run: git fetch --all
+          fetch-depth: '0'
 
       - name: 'Install Python'
         uses: actions/setup-python@v6
