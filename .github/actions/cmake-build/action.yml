@@ -1,0 +1,45 @@
+name: 'CMake Run and Build Composite Action'
+
+inputs:
+  outdir:
+    description: 'Output directory if the build'
+    required: true
+  cmake-version:
+    description: 'Version of CMake to install and use'
+    required: false
+    default: 'latest'
+  working-dir:
+    description: 'Working directory for the build'
+    required: true
+  cmake-args:
+    description: 'Additional arguments to pass to cmake'
+    default: ''
+    required: false
+  build-cores:
+    description: 'How many cores to use during compilation'
+    # Only change this value on self-managed runners
+    # Default GitHub runners only 4 cores
+    default: '4'
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: 'Install CMake'
+      uses: lukka/get-cmake@latest
+      with:
+        cmakeVersion: ${{ inputs.cmake-version }}
+
+    - name: 'Make working directory'
+      shell: bash
+      run: mkdir ${{ inputs.working-dir }}
+
+    - name: 'Run CMake build'
+      working-directory: ${{ inputs.working-dir }}
+      shell: bash
+      run: cmake ${{ inputs.cmake-args }} ..
+
+    - name: 'Build solution via CMake'
+      working-directory: ${{ inputs.working-dir }}
+      shell: bash
+      run: make -j${{ inputs.build-cores }}
