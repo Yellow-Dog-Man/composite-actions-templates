@@ -24,6 +24,7 @@ nav:
       - Docker Build Push: composite/docker-build-push.md
       - .NET Build: composite/dotnet-build.md
       - .NET Build Push: composite/dotnet-build-push-nuget.md
+      - .NET Run Tests: composite/dotnet-tests-run.md
 
 plugins:
   - mkdocstrings:
