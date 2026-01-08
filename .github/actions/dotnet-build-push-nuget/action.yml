@@ -24,6 +24,7 @@ inputs:
     required: false
   dotnet-nuget-auth-token:
     description: 'Authentication token for the NuGet registry.'
+    required: true
 
 runs:
   using: composite
