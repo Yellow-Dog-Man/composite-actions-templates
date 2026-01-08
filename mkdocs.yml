@@ -45,7 +45,7 @@ plugins:
             parameters_groups: false
             parameters_group_title_row: true
             signature_version: string
-            signature_version_string: main
+            signature_version_string: ref
             show_source: true
             show_outputs: true
             show_secrets: true
