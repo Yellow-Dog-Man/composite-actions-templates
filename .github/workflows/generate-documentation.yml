@@ -1,0 +1,48 @@
+name: 'Documentation generator'
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    name: 'Generate Mkdocs docs'
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Configure GitHub pages'
+        uses: actions/configure-pages@v5
+
+      - name: 'Checkout repository'
+        uses: actions/checkout@v6
+
+      - name: 'Install Python'
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: 'Install dependencies'
+        run: pip install -r requirements.txt
+
+      - name: 'Build Zensical docs'
+        run: mkdocs build
+
+      - name: 'Upload built artifact to GitHub pages'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: 'Deploy GitHub pages to production'
+        uses: actions/deploy-pages@v4
+        id: deployment

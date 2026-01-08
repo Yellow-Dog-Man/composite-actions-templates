@@ -1,0 +1,28 @@
+site_name: YDMS Composite Actions Templates
+
+theme:
+  name: material
+
+nav:
+  - Home:
+      - Overview: index.md
+  - Composite Actions:
+      - Unity Download: composite/unity-download.md
+
+plugins:
+  - mkdocstrings:
+      default_handler: github
+      handlers:
+        github:
+          options:
+            signature_repository: Yellow-Dog-Man/composite-actions-templates
+            show_toc_entry: false
+            heading_level: 3
+            parameters_anchors: false
+            parameters_groups: false
+            parameters_group_title_row: true
+            signature_version: string
+            signature_version_string: main
+            show_source: true
+            show_outputs: true
+            show_secrets: true

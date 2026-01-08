@@ -1,4 +1,5 @@
 name: 'Download and cache Unity Runtime'
+description: 'Downloads the Unity runtime with heavy caching.'
 
 inputs:
   version:
