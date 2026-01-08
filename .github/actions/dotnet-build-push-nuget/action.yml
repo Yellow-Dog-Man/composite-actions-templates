@@ -25,13 +25,17 @@ inputs:
   dotnet-nuget-auth-token:
     description: 'Authentication token for the NuGet registry.'
     required: true
+  ref:
+    description: 'Reference tag/branch to use for the workflow.'
+    default: 'main'
+    required: false
 
 runs:
   using: composite
 
   steps:
     - name: 'Build .NET Solution'
-      uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build@main
+      uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build@${{ inputs.ref }}
       with:
         dotnet-version: '${{ inputs.dotnet-version }}'
         dotnet-build-args: '${{ inputs.dotnet-build-args }} -o ${{ inputs.dotnet-nuget-out-path }}'
