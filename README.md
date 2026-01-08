@@ -4,7 +4,7 @@ This repository contains GitHub Actions templates that can be reused across the 
 
 The end goal is to provide versioned, easily-reusable workflows to quickly set up new repositories.
 
-For documentation, see [the repository wiki](https://github.com/Yellow-Dog-Man/composite-actions-templates/wiki).
+For documentation, see [the documentation site](https://yellow-dog-man.github.io/composite-actions-templates/).
 
 ## Further reading
 
