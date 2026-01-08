@@ -8,6 +8,7 @@ nav:
       - Overview: index.md
   - Composite Actions:
       - Unity Download: composite/unity-download.md
+      - CMake Build: composite/cmake-build.md
 
 plugins:
   - mkdocstrings:

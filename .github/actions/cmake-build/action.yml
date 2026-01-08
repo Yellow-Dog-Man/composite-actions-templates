@@ -1,8 +1,9 @@
 name: 'CMake Run and Build Composite Action'
+description: 'Will install CMake then build the current project with it.'
 
 inputs:
   outdir:
-    description: 'Output directory if the build'
+    description: 'Output directory of the build'
     required: true
   cmake-version:
     description: 'Version of CMake to install and use'
