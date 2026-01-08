@@ -3,6 +3,8 @@ site_name: YDMS Composite Actions Templates
 repo_name: Yellow-Dog-Man/composite-actions-templates
 repo_url: https://github.com/Yellow-Dog-Man/composite-actions-templates
 
+site_url: 'https://yellow-dog-man.github.io/composite-actions-templates/'
+
 theme:
   name: material
   palette:
@@ -52,3 +54,5 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Yellow-Dog-Man/
+  version:
+    provider: mike
