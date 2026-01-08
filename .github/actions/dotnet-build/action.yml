@@ -31,7 +31,7 @@ runs:
     - name: 'Build Solution'
       shell: bash
       if: ${{ inputs.dotnet-build-type == 'build' }}
-      run: docker build -c Release ${{ inputs.dotnet-build-args }} ${{ inputs.dotnet-project-path }}
+      run: dotnet build -c Release ${{ inputs.dotnet-build-args }} ${{ inputs.dotnet-project-path }}
 
     - name: 'Pack Solution for NuGET'
       shell: bash
