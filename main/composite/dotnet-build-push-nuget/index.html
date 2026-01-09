@@ -515,7 +515,7 @@
   <a href="#.github/actions/dotnet-build-push-nuget" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .NET Build Push NuGet
+        .NET Push NuGet
       
     </span>
   </a>
@@ -678,7 +678,7 @@
   <a href="#.github/actions/dotnet-build-push-nuget" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .NET Build Push NuGet
+        .NET Push NuGet
       
     </span>
   </a>
@@ -713,7 +713,7 @@
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <div class="doc doc-object doc-action">
 
-<h3 id=".github/actions/dotnet-build-push-nuget" class="doc doc-heading">        .NET Build Push NuGet
+<h3 id=".github/actions/dotnet-build-push-nuget" class="doc doc-heading">        .NET Push NuGet
 </h3>
 
         <div class="annotate">
@@ -724,7 +724,7 @@
         <ol>
           <li><p>Authentication token for the NuGet registry.</p></li>
         </ol>
-      <p>Builds the Solution then pushes the results to a NuGet registry</p>
+      <p>Pushes nugets the registry</p>
 
 
   
@@ -734,7 +734,7 @@
 
     <p>
       <span class="doc-section-title">Inputs:</span>
-      <a class="headerlink" href="#inputs-github-actions-dotnet-build-push-nuget" title="Link to .NET Build Push NuGet outputs">¤</a>
+      <a class="headerlink" href="#inputs-github-actions-dotnet-build-push-nuget" title="Link to .NET Push NuGet outputs">¤</a>
     </p>
     <table data-gh-parameters>
       <thead>
@@ -744,39 +744,6 @@
 <th>Default</th>        </tr>
       </thead>
       <tbody>
-          <tr class="doc-section-item">
-            <td id="None">
-                <code>dotnet-version</code>
-            </td>
-            <td>
-              <p>.NET version to use</p>
-            </td>
-            <td>
-                <code>10.0.x</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td id="None">
-                <code>dotnet-build-args</code>
-            </td>
-            <td>
-              <p>Additional args to pass to the .NET build process</p>
-            </td>
-            <td>
-                <code></code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td id="None">
-                <code>dotnet-project-path</code>
-            </td>
-            <td>
-              <p>Path to the .NET project to build.</p>
-            </td>
-            <td>
-                <code>.</code>
-            </td>
-          </tr>
           <tr class="doc-section-item">
             <td id="None">
                 <code>dotnet-nuget-out-path</code>
@@ -841,42 +808,10 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.NET</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Push</span><span class="nv"> </span><span class="s">NuGet&#39;</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Builds</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Solution</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">pushes</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">results</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">NuGet</span><span class="nv"> </span><span class="s">registry&#39;</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.NET</span><span class="nv"> </span><span class="s">Push</span><span class="nv"> </span><span class="s">NuGet&#39;</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Pushes</span><span class="nv"> </span><span class="s">nugets</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">registry&#39;</span>
 
 <span class="nt">inputs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">dotnet-version</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.NET</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use&#39;</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10.0.x&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">dotnet-build-args</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Additional</span><span class="nv"> </span><span class="s">args</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pass</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">.NET</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">process&#39;</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">dotnet-project-path</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">.NET</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">build.&#39;</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">dotnet-nuget-out-path</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">under</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">Nugets</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">put</span><span class="nv"> </span><span class="s">after</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">build.&#39;</span>
 <span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">github.workspace</span><span class="nv"> </span><span class="s">}}/nupkgs&#39;</span>
@@ -893,14 +828,6 @@
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composite</span>
 
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">.NET</span><span class="nv"> </span><span class="s">Solution&#39;</span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build@main</span>
-<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">dotnet-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">inputs.dotnet-version</span><span class="nv"> </span><span class="s">}}&#39;</span>
-<span class="w">        </span><span class="nt">dotnet-build-args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">inputs.dotnet-build-args</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">${{</span><span class="nv"> </span><span class="s">inputs.dotnet-nuget-out-path</span><span class="nv"> </span><span class="s">}}&#39;</span>
-<span class="w">        </span><span class="nt">dotnet-build-type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pack&#39;</span>
-<span class="w">        </span><span class="nt">dotnet-project-path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">inputs.dotnet-project-path</span><span class="nv"> </span><span class="s">}}&#39;</span>
-
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">package</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">registry&#39;</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
 <span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dotnet nuget push ${{ inputs.dotnet-nuget-out-path }}/*.nupkg -k ${{ inputs.dotnet-nuget-auth-token }} -s ${{ inputs.dotnet-nuget-registry-url }}</span>
