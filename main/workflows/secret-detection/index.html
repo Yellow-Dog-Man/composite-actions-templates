@@ -756,7 +756,9 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Secret</span><span class="nv"> </span><span class="s">detection</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">push&#39;</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Secret</span><span class="nv"> </span><span class="s">detection</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">push&#39;</span>
 
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
@@ -771,6 +773,8 @@
 
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v6</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0&#39;</span>
 
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitleaks/gitleaks-action@v2</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
