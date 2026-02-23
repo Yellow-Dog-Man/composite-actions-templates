@@ -2,9 +2,6 @@ name: 'R2 download artifact'
 description: 'Downloads an artifact from R2.'
 
 inputs:
-  file-path:
-    description: 'Path to the file is.'
-    required: true
   r2-storage-bucket:
     description: 'Storage bucket to use to store the artifacts'
     required: true
@@ -45,7 +42,7 @@ runs:
       shell: bash
       id: s3get
       continue-on-error: true
-      run: s3cmd --access_key=${{ inputs.r2-auth-token-id }} --secret_key=${{ inputs.r2-auth-token }} --region=${{ inputs.r2-region }} --host=https://${{ inputs.r2-api-id }}.r2.cloudflarestorage.com get s3://${{ inputs.r2-storage-bucket }}/github/${{ inputs.file-path }}/files.tar.zstd .
+      run: s3cmd --access_key=${{ inputs.r2-auth-token-id }} --secret_key=${{ inputs.r2-auth-token }} --region=${{ inputs.r2-region }} --host=https://${{ inputs.r2-api-id }}.r2.cloudflarestorage.com get s3://${{ inputs.r2-storage-bucket }}/github/${{ inputs.r2-path }}/files.tar.zstd .
 
     - name: 'Decompress file to path'
       shell: bash
