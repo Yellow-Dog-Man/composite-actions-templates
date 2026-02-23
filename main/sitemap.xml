@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/cmake-build/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/docker-build-push/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/dotnet-build-push-nuget/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/dotnet-build/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/dotnet-tests-run/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/unity-download/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/composite/upload-to-r2/</loc>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://yellow-dog-man.github.io/composite-actions-templates/main/workflows/secret-detection/</loc>
-         <lastmod>2026-01-09</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
 </urlset>
