@@ -24,11 +24,6 @@ inputs:
     description: 'Path within R2 where to put the file.'
     required: true
 
-outputs:
-  artifact-download-url:
-    description: 'URL to download the artifact'
-    value: ${{ steps.dest-dir.outputs.directory }}
-
 runs:
   using: composite
   steps:
