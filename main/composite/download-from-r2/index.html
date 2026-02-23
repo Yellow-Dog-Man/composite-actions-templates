@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://yellow-dog-man.github.io/composite-actions-templates/main/composite/dotnet-build-push-nuget/">
+        <link rel="canonical" href="https://yellow-dog-man.github.io/composite-actions-templates/main/composite/download-from-r2/">
       
       
-        <link rel="prev" href="../dotnet-build/">
+        <link rel="prev" href="../upload-to-r2/">
       
       
-        <link rel="next" href="../dotnet-tests-run/">
+        <link rel="next" href="../../workflows/secret-detection/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>.NET Build Push - YDMS Composite Actions Templates</title>
+        <title>Download artifacts from R2 - YDMS Composite Actions Templates</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#net-build-push" class="md-skip">
+        <a href="#.github/actions/download-from-r2" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              .NET Build Push
+              Download artifacts from R2
             
           </span>
         </div>
@@ -449,37 +449,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    .NET Build Push
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dotnet-build-push-nuget/" class="md-nav__link">
         
   
   
@@ -495,37 +468,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#.github/actions/dotnet-build-push-nuget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        .NET Push NuGet
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -591,10 +533,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../download-from-r2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download from R2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -610,6 +577,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#.github/actions/download-from-r2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2 download artifact
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -721,8 +717,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -731,10 +725,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#.github/actions/dotnet-build-push-nuget" class="md-nav__link">
+  <a href="#.github/actions/download-from-r2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .NET Push NuGet
+        R2 download artifact
       
     </span>
   </a>
@@ -761,26 +755,40 @@
   
 
 
-<h1 id="net-build-push">.NET Build Push</h1>
-<p>This Composite Action is used to build, then push a package to a NuGet registry.</p>
-<p>Do note this forces the type <code>pack</code> of build.</p>
+  <h1>Download from R2</h1>
+
+<p>This Composite Action downloads an artifact from Cloudflare R2.</p>
 
 
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <div class="doc doc-object doc-action">
 
-<h3 id=".github/actions/dotnet-build-push-nuget" class="doc doc-heading">        .NET Push NuGet
+<h3 id=".github/actions/download-from-r2" class="doc doc-heading">        R2 download artifact
 </h3>
 
         <div class="annotate">
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build-push-nuget@main</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/download-from-r2@main</span>
 <span class="w">  </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">dotnet-nuget-auth-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(1)</span>
+<span class="w">    </span><span class="nt">file-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(1)</span>
+<span class="w">    </span><span class="nt">r2-storage-bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(2)</span>
+<span class="w">    </span><span class="nt">r2-api-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(3)</span>
+<span class="w">    </span><span class="nt">r2-auth-token-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(4)</span>
+<span class="w">    </span><span class="nt">r2-auth-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(5)</span>
+<span class="w">    </span><span class="nt">r2-region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(6)</span>
+<span class="w">    </span><span class="nt">r2-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(7)</span>
+<span class="w">    </span><span class="nt">put-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(8)</span>
 </code></pre></div>        </div>
         <ol>
-          <li><p>Authentication token for the NuGet registry.</p></li>
+          <li><p>Path to the file is.</p></li>
+          <li><p>Storage bucket to use to store the artifacts</p></li>
+          <li><p>Account ID for R2</p></li>
+          <li><p>ID of the authentication token for R2</p></li>
+          <li><p>Authentication token for R2</p></li>
+          <li><p>Region for the R2 account</p></li>
+          <li><p>Path within R2 where to put the file.</p></li>
+          <li><p>File path where to put the files.</p></li>
         </ol>
-      <p>Pushes nugets the registry</p>
+      <p>Downloads an artifact from R2.</p>
 
 
   
@@ -790,46 +798,78 @@
 
     <p>
       <span class="doc-section-title">Inputs:</span>
-      <a class="headerlink" href="#inputs-github-actions-dotnet-build-push-nuget" title="Link to .NET Push NuGet outputs">¤</a>
+      <a class="headerlink" href="#inputs-github-actions-download-from-r2" title="Link to R2 download artifact outputs">¤</a>
     </p>
     <table data-gh-parameters>
       <thead>
         <tr>
           <th>Name</th>
           <th>Description</th>
-<th>Default</th>        </tr>
+        </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
             <td id="None">
-                <code>dotnet-nuget-out-path</code>
+                <strong><code>file-path</code></strong>
             </td>
             <td>
-              <p>Path under which Nugets will be put after the build.</p>
-            </td>
-            <td>
-                <code>${{ github.workspace }}/nupkgs</code>
+              <p>Path to the file is.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <code>dotnet-nuget-registry-url</code>
+                <strong><code>r2-storage-bucket</code></strong>
             </td>
             <td>
-              <p>Publishing URL of the NuGet registry.</p>
-            </td>
-            <td>
-                <code>https://api.nuget.org/v3/index.json</code>
+              <p>Storage bucket to use to store the artifacts</p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <strong><code>dotnet-nuget-auth-token</code></strong>
+                <strong><code>r2-api-id</code></strong>
             </td>
             <td>
-              <p>Authentication token for the NuGet registry.</p>
+              <p>Account ID for R2</p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-auth-token-id</code></strong>
             </td>
             <td>
+              <p>ID of the authentication token for R2</p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-auth-token</code></strong>
+            </td>
+            <td>
+              <p>Authentication token for R2</p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-region</code></strong>
+            </td>
+            <td>
+              <p>Region for the R2 account</p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-path</code></strong>
+            </td>
+            <td>
+              <p>Path within R2 where to put the file.</p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>put-path</code></strong>
+            </td>
+            <td>
+              <p>File path where to put the files.</p>
             </td>
           </tr>
       </tbody>
@@ -840,8 +880,33 @@
   
 
 
+
+    <p>
+      <span class="doc-section-title">Outputs:</span>
+      <a class="headerlink" href="#outputs-github-actions-download-from-r2" title="Link to R2 download artifact outputs">¤</a>
+    </p>
+    <table data-gh-parameters>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td id="None">
+              <code>cache-hit</code>
+            </td>
+            <td>
+              <p>Returns if the cache was hit or not.</p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
       <details class="quote">
-        <summary>Source of <code>Yellow-Dog-Man/composite-actions-templates/.github/actions/dotnet-build-push-nuget@main</code></summary>
+        <summary>Source of <code>Yellow-Dog-Man/composite-actions-templates/.github/actions/download-from-r2@main</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -864,29 +929,111 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.NET</span><span class="nv"> </span><span class="s">Push</span><span class="nv"> </span><span class="s">NuGet&#39;</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Pushes</span><span class="nv"> </span><span class="s">nugets</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">registry&#39;</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;R2</span><span class="nv"> </span><span class="s">download</span><span class="nv"> </span><span class="s">artifact&#39;</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Downloads</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">artifact</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">R2.&#39;</span>
 
 <span class="nt">inputs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">dotnet-nuget-out-path</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">under</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">Nugets</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">put</span><span class="nv"> </span><span class="s">after</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">build.&#39;</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">github.workspace</span><span class="nv"> </span><span class="s">}}/nupkgs&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">dotnet-nuget-registry-url</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publishing</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">NuGet</span><span class="nv"> </span><span class="s">registry.&#39;</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://api.nuget.org/v3/index.json&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">dotnet-nuget-auth-token</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">NuGet</span><span class="nv"> </span><span class="s">registry.&#39;</span>
+<span class="w">  </span><span class="nt">file-path</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">file</span><span class="nv"> </span><span class="s">is.&#39;</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-storage-bucket</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Storage</span><span class="nv"> </span><span class="s">bucket</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">store</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">artifacts&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-api-id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Account</span><span class="nv"> </span><span class="s">ID</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-auth-token-id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ID</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-auth-token</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-region</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Region</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">R2</span><span class="nv"> </span><span class="s">account&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-path</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">R2</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">put</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">file.&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">put-path</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;File</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">put</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">files.&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">outputs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cache-hit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Returns</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">hit</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">not.&#39;</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.cache-status.outputs.status }}</span>
 
 <span class="nt">runs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composite</span>
-
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">package</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">registry&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Install</span><span class="nv"> </span><span class="s">dependencies&#39;</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
-<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dotnet nuget push ${{ inputs.dotnet-nuget-out-path }}/*.nupkg -k ${{ inputs.dotnet-nuget-auth-token }} -s ${{ inputs.dotnet-nuget-registry-url }}</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">apt-get update</span>
+<span class="w">        </span><span class="no">apt-get install -y s3cmd</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Get</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">file&#39;</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3get</span>
+<span class="w">      </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3cmd --access_key=${{ inputs.r2-auth-token-id }} --secret_key=${{ inputs.r2-auth-token }} --region=${{ inputs.r2-region }} --host=https://${{ inputs.r2-api-id }}.r2.cloudflarestorage.com get s3://${{ inputs.r2-storage-bucket }}/github/${{ inputs.file-path }}/files.tar.zstd .</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Decompress</span><span class="nv"> </span><span class="s">file</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">path&#39;</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decomp</span>
+<span class="w">      </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tar -xf files.tar.zstd -C ${{ inputs.put-path }}</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Return</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">success&#39;</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-status</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">if [ &quot;${{ steps.s3get.conclusion }}&quot; != &quot;success&quot; ] || [ &quot;${{ steps.decomp.conclusion }}&quot; != &quot;success&quot; ]; then</span>
+<span class="w">          </span><span class="no">echo &quot;status=false&quot; &gt;&gt; $GITHUB_ENV</span>
+<span class="w">        </span><span class="no">else</span>
+<span class="w">          </span><span class="no">echo &quot;status=true&quot; &gt;&gt; $GITHUB_ENV</span>
+<span class="w">        </span><span class="no">fi</span>
 </code></pre></div></td></tr></table></div>
       </details>
 </div>
@@ -897,6 +1044,9 @@
 
 
 
+
+  
+  
 
 
 
