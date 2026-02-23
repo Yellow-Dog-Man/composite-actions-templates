@@ -30,6 +30,7 @@ nav:
       - .NET Build Push: composite/dotnet-build-push-nuget.md
       - .NET Run Tests: composite/dotnet-tests-run.md
       - Upload to R2: composite/upload-to-r2.md
+      - Download from R2: composite/download-from-r2.md
   - Reusable Workflows:
       - Secret Detection: workflows/secret-detection.md
 
