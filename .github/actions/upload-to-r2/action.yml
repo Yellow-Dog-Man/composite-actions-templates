@@ -1,0 +1,47 @@
+name: 'R2 upload artifact'
+description: 'Uploads a directory to R2.'
+
+inputs:
+  file-path:
+    description: 'Path to the file being uploaded'
+    required: true
+  r2-storage-bucket:
+    description: 'Storage bucket to use to store the artifacts'
+    required: true
+  r2-api-id:
+    description: 'Account ID for R2'
+    required: true
+  r2-auth-token-id:
+    description: 'ID of the authentication token for R2'
+    required: true
+  r2-auth-token:
+    description: 'Authentication token for R2'
+    required: true
+  r2-region:
+    description: 'Region for the R2 account'
+    required: true
+  r2-path:
+    description: 'Path within R2 where to put the file.'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 'Install dependencies'
+      shell: bash
+      run: |
+        apt-get update
+        apt-get install -y s3cmd
+
+    - name: 'Generate zip for files'
+      shell: bash
+      run: tar --zstd -cf files.tar.zstd ${{ inputs.file-path }}
+
+    - name: 'Generate destination dir'
+      id: dest-dir
+      shell: bash
+      run: echo "directory=github/${{ inputs.r2-path }}" >> $GITHUB_OUTPUT
+
+    - name: 'Upload files to bucket'
+      shell: bash
+      run: s3cmd --access_key=${{ inputs.r2-auth-token-id }} --secret_key=${{ inputs.r2-auth-token }} --region=${{ inputs.r2-region }} --host=https://${{ inputs.r2-api-id }}.r2.cloudflarestorage.com put files.tar.zstd s3://${{ inputs.r2-storage-bucket }}/${{ steps.dest-dir.outputs.directory }}/
