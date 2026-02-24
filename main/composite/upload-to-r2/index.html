@@ -955,7 +955,7 @@
 
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Generate</span><span class="nv"> </span><span class="s">zip</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">files&#39;</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
-<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tar --zstd -cf files.tar.zstd ${{ inputs.file-path }}</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tar --zstd -cf files.tar.zstd -C ${{ inputs.file-path }} .</span>
 
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Generate</span><span class="nv"> </span><span class="s">destination</span><span class="nv"> </span><span class="s">dir&#39;</span>
 <span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dest-dir</span>
