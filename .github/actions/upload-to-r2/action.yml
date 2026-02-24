@@ -35,7 +35,7 @@ runs:
 
     - name: 'Generate zip for files'
       shell: bash
-      run: tar --zstd -cf files.tar.zstd ${{ inputs.file-path }}
+      run: tar --zstd -cf files.tar.zstd -C ${{ inputs.file-path }} .
 
     - name: 'Generate destination dir'
       id: dest-dir
