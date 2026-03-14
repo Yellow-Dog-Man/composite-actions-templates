@@ -775,8 +775,19 @@ Due to its heavy nature, it features heavy caching and will only download Unity 
 
         <div class="annotate">
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/unity-download@main</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">r2-storage-bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(1)</span>
+<span class="w">    </span><span class="nt">r2-api-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(2)</span>
+<span class="w">    </span><span class="nt">r2-auth-token-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(3)</span>
+<span class="w">    </span><span class="nt">r2-auth-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(4)</span>
+<span class="w">    </span><span class="nt">r2-region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(5)</span>
 </code></pre></div>        </div>
         <ol>
+          <li><p>Storage bucket to use to store the artifacts</p></li>
+          <li><p>Account ID for R2</p></li>
+          <li><p>ID of the authentication token for R2</p></li>
+          <li><p>Authentication token for R2</p></li>
+          <li><p>Region for the R2 account</p></li>
         </ol>
       <p>Downloads the Unity runtime with heavy caching.</p>
 
@@ -833,37 +844,62 @@ universal-windows-platform
 </code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-storage-bucket</code></strong>
+            </td>
+            <td>
+              <p>Storage bucket to use to store the artifacts</p>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-api-id</code></strong>
+            </td>
+            <td>
+              <p>Account ID for R2</p>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-auth-token-id</code></strong>
+            </td>
+            <td>
+              <p>ID of the authentication token for R2</p>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-auth-token</code></strong>
+            </td>
+            <td>
+              <p>Authentication token for R2</p>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>r2-region</code></strong>
+            </td>
+            <td>
+              <p>Region for the R2 account</p>
+            </td>
+            <td>
+            </td>
+          </tr>
       </tbody>
     </table>
 
 
 
   
-
-
-
-    <p>
-      <span class="doc-section-title">Outputs:</span>
-      <a class="headerlink" href="#outputs-github-actions-unity-download" title="Link to Download and cache Unity Runtime outputs">¤</a>
-    </p>
-    <table data-gh-parameters>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td id="None">
-              <code>unity-editor-path</code>
-            </td>
-            <td>
-              <p>Path to the Unity editor</p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
 
 
       <details class="quote">
@@ -911,16 +947,7 @@ universal-windows-platform
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Download</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">Runtime&#39;</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Download</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">Runtime&#39;</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Downloads</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">runtime</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">heavy</span><span class="nv"> </span><span class="s">caching.&#39;</span>
 
 <span class="nt">inputs</span><span class="p">:</span>
@@ -938,41 +965,32 @@ universal-windows-platform
 <span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">windows-server</span>
 <span class="w">      </span><span class="no">universal-windows-platform</span>
-
-<span class="nt">outputs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">unity-editor-path</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">editor&#39;</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.editor-path.outputs.editor-path }}</span>
+<span class="w">  </span><span class="nt">r2-storage-bucket</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Storage</span><span class="nv"> </span><span class="s">bucket</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">store</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">artifacts&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-api-id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Account</span><span class="nv"> </span><span class="s">ID</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-auth-token-id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ID</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-auth-token</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">r2-region</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Region</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">R2</span><span class="nv"> </span><span class="s">account&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">runs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composite</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Get</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">cache&#39;</span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@v5</span>
-<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache</span>
-<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;C:\Program</span><span class="nv"> </span><span class="s">Files\Unity\&#39;</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.version }}</span>
-
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;setup</span><span class="nv"> </span><span class="s">Unity&#39;</span>
-<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.cache.outputs.cache-hit != &#39;true&#39;</span>
 <span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">buildalon/unity-setup@v2</span>
 <span class="w">      </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">unity-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.version }}</span>
 <span class="w">        </span><span class="nt">build-targets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.build-target }}</span>
 <span class="w">        </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.modules }}</span>
-
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Cache</span><span class="nv"> </span><span class="s">Unity&#39;</span>
-<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.cache.outputs.cache-hit != &#39;true&#39;</span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache/save@v5</span>
-<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;C:\Program</span><span class="nv"> </span><span class="s">Files\Unity\&#39;</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.version }}</span>
-
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Set</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">Editor</span><span class="nv"> </span><span class="s">Path&#39;</span>
-<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor-path</span>
-<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pwsh</span>
-<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;editor-path=C:\Program Files\Unity\Hub\Editor\${{ inputs.version }}\Editor\Unity.exe&quot; &gt;&gt; $env:GITHUB_OUTPUT</span>
+<span class="w">        </span><span class="nt">cache-installation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div></td></tr></table></div>
       </details>
 </div>
