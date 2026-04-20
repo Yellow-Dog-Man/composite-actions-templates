@@ -775,9 +775,11 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/docker-build-push@main</span>
 <span class="w">  </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">docker-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(1)</span>
+<span class="w">    </span><span class="nt">docker-image-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(2)</span>
 </code></pre></div>        </div>
         <ol>
           <li><p>Docker auth token for the registry.</p></li>
+          <li><p>The name of the Docker image.</p></li>
         </ol>
       <p>Builds a Docker container and pushes it to the specified registry.</p>
 
@@ -853,6 +855,16 @@
                 <code>linux/amd64</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <strong><code>docker-image-name</code></strong>
+            </td>
+            <td>
+              <p>The name of the Docker image.</p>
+            </td>
+            <td>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -923,7 +935,10 @@
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Docker</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">push&#39;</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Docker</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">push&#39;</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Builds</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Docker</span><span class="nv"> </span><span class="s">container</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">pushes</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">registry.&#39;</span>
 
 <span class="nt">inputs</span><span class="p">:</span>
@@ -946,6 +961,9 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;List</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">platforms</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">for.&#39;</span>
 <span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;linux/amd64&#39;</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">docker-image-name</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Docker</span><span class="nv"> </span><span class="s">image.&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">runs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composite</span>
@@ -968,7 +986,7 @@
 <span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta</span>
 <span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf</span><span class="w"> </span><span class="c1"># v6.0.0</span>
 <span class="w">      </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/${{ github.repository }}</span>
+<span class="w">        </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/${{ inputs.docker-image-name }}</span>
 <span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">type=ref,event=branch</span>
 <span class="w">          </span><span class="no">type=ref,event=pr</span>
