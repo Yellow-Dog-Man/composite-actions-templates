@@ -21,6 +21,9 @@ inputs:
     description: 'List of platforms to build the image for.'
     default: 'linux/amd64'
     required: false
+  docker-image-name:
+    description: 'The name of the Docker image.'
+    required: true
 
 runs:
   using: composite
@@ -43,7 +46,7 @@ runs:
       id: meta
       uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf # v6.0.0
       with:
-        images: ghcr.io/${{ github.repository }}
+        images: ghcr.io/${{ inputs.docker-image-name }}
         tags: |
           type=ref,event=branch
           type=ref,event=pr
