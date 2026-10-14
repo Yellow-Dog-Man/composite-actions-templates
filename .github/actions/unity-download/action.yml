@@ -51,7 +51,7 @@ runs:
         unity install ${{ inputs.version }} -a x86_64 -m windows-mono --cm
 
     - name: 'Cache Unity'
-      if: ${{ steps.unity-cache-pull.outputs.cache-hit != '' }}
+      if: ${{ steps.unity-cache-pull.outputs.cache-hit == false }}
       uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         key: unity-setup-linux-${{ inputs.version }}-windows-mono
