@@ -989,7 +989,7 @@ Due to its heavy nature, it features heavy caching and will only download Unity 
 <span class="w">        </span><span class="no">unity install ${{ inputs.version }} -a x86_64 -m windows-mono --cm</span>
 
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Cache</span><span class="nv"> </span><span class="s">Unity&#39;</span>
-<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.unity-cache-pull.outputs.cache-hit != &#39;&#39; }}</span>
+<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.unity-cache-pull.outputs.cache-hit == false }}</span>
 <span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9</span><span class="w"> </span><span class="c1"># v6.1.0</span>
 <span class="w">      </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unity-setup-linux-${{ inputs.version }}-windows-mono</span>
