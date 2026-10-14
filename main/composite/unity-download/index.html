@@ -775,19 +775,8 @@ Due to its heavy nature, it features heavy caching and will only download Unity 
 
         <div class="annotate">
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yellow-Dog-Man/composite-actions-templates/.github/actions/unity-download@main</span>
-<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">r2-storage-bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(1)</span>
-<span class="w">    </span><span class="nt">r2-api-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(2)</span>
-<span class="w">    </span><span class="nt">r2-auth-token-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(3)</span>
-<span class="w">    </span><span class="nt">r2-auth-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(4)</span>
-<span class="w">    </span><span class="nt">r2-region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(5)</span>
 </code></pre></div>        </div>
         <ol>
-          <li><p>Storage bucket to use to store the artifacts</p></li>
-          <li><p>Account ID for R2</p></li>
-          <li><p>ID of the authentication token for R2</p></li>
-          <li><p>Authentication token for R2</p></li>
-          <li><p>Region for the R2 account</p></li>
         </ol>
       <p>Downloads the Unity runtime with heavy caching.</p>
 
@@ -822,74 +811,50 @@ Due to its heavy nature, it features heavy caching and will only download Unity 
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <code>build-target</code>
+                <code>UNITY_SERVICE_ACCOUNT_ID</code>
             </td>
             <td>
-              <p>Build target for Unity</p>
-            </td>
-            <td>
-                <code>StandaloneWindows64</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td id="None">
-                <code>modules</code>
-            </td>
-            <td>
-              <p>Modules to install, use comma separated list</p>
-            </td>
-            <td>
-                <code>windows-server
-universal-windows-platform
-</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td id="None">
-                <strong><code>r2-storage-bucket</code></strong>
-            </td>
-            <td>
-              <p>Storage bucket to use to store the artifacts</p>
+              <p>Unity service account ID</p>
             </td>
             <td>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <strong><code>r2-api-id</code></strong>
+                <code>UNITY_SERVICE_ACCOUNT_SECRET</code>
             </td>
             <td>
-              <p>Account ID for R2</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td id="None">
-                <strong><code>r2-auth-token-id</code></strong>
-            </td>
-            <td>
-              <p>ID of the authentication token for R2</p>
+              <p>Unity service account secret</p>
             </td>
             <td>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <strong><code>r2-auth-token</code></strong>
+                <code>UNITY_CI_LICENSE_ID</code>
             </td>
             <td>
-              <p>Authentication token for R2</p>
+              <p>Unity CI license ID</p>
             </td>
             <td>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td id="None">
-                <strong><code>r2-region</code></strong>
+                <code>UNITY_CI_USERNAME</code>
             </td>
             <td>
-              <p>Region for the R2 account</p>
+              <p>Unity CI account username</p>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td id="None">
+                <code>UNITY_CI_PASSWORD</code>
+            </td>
+            <td>
+              <p>Unity CI account password</p>
             </td>
             <td>
             </td>
@@ -947,7 +912,31 @@ universal-windows-platform
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Download</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">Runtime&#39;</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Download</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">Runtime&#39;</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Downloads</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">runtime</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">heavy</span><span class="nv"> </span><span class="s">caching.&#39;</span>
 
 <span class="nt">inputs</span><span class="p">:</span>
@@ -955,42 +944,66 @@ universal-windows-platform
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">download&#39;</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2019.4.19f1&#39;</span>
-<span class="w">  </span><span class="nt">build-target</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">target</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Unity&#39;</span>
+<span class="w">  </span><span class="nt">UNITY_SERVICE_ACCOUNT_ID</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Unity</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">ID&#39;</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;StandaloneWindows64&#39;</span>
-<span class="w">  </span><span class="nt">modules</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Modules</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">install,</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">comma</span><span class="nv"> </span><span class="s">separated</span><span class="nv"> </span><span class="s">list&#39;</span>
+<span class="w">  </span><span class="nt">UNITY_SERVICE_ACCOUNT_SECRET</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Unity</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">secret&#39;</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">windows-server</span>
-<span class="w">      </span><span class="no">universal-windows-platform</span>
-<span class="w">  </span><span class="nt">r2-storage-bucket</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Storage</span><span class="nv"> </span><span class="s">bucket</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">store</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">artifacts&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">r2-api-id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Account</span><span class="nv"> </span><span class="s">ID</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">r2-auth-token-id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ID</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">r2-auth-token</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Authentication</span><span class="nv"> </span><span class="s">token</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">R2&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">r2-region</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Region</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">R2</span><span class="nv"> </span><span class="s">account&#39;</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">UNITY_CI_LICENSE_ID</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Unity</span><span class="nv"> </span><span class="s">CI</span><span class="nv"> </span><span class="s">license</span><span class="nv"> </span><span class="s">ID&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">UNITY_CI_USERNAME</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Unity</span><span class="nv"> </span><span class="s">CI</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">username&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">UNITY_CI_PASSWORD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Unity</span><span class="nv"> </span><span class="s">CI</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">password&#39;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
 <span class="nt">runs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composite</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;setup</span><span class="nv"> </span><span class="s">Unity&#39;</span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">buildalon/unity-setup@v2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Pull</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">cache&#39;</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unity-cache-pull</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9</span><span class="w"> </span><span class="c1"># v6.1.0</span>
 <span class="w">      </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">unity-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.version }}</span>
-<span class="w">        </span><span class="nt">build-targets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.build-target }}</span>
-<span class="w">        </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ inputs.modules }}</span>
-<span class="w">        </span><span class="nt">cache-installation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unity-setup-linux-${{ inputs.version }}-windows-mono</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/runner/Unity/Hub/Editor</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Install</span><span class="nv"> </span><span class="s">Unity&#39;</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">      </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">curl -sL https://hub.unity3d.com/linux/keys/public | sudo gpg --dearmor -o /usr/share/keyrings/Unity_Technologies_ApS.gpg</span>
+<span class="w">        </span><span class="no">sudo tee /etc/apt/sources.list.d/unity-cli.sources &lt;&lt;&#39;EOF&#39;</span>
+<span class="w">        </span><span class="no">Types: deb</span>
+<span class="w">        </span><span class="no">URIs: https://hub.unity3d.com/linux/repos/deb</span>
+<span class="w">        </span><span class="no">Suites: unstable</span>
+<span class="w">        </span><span class="no">Components: main</span>
+<span class="w">        </span><span class="no">Signed-By: /usr/share/keyrings/Unity_Technologies_ApS.gpg</span>
+<span class="w">        </span><span class="no">EOF</span>
+
+<span class="w">        </span><span class="no">sudo apt-get update &amp;&amp; sudo apt-get install -y unity-cli</span>
+
+<span class="w">        </span><span class="no">unity editors -i</span>
+<span class="w">        </span><span class="no">unity install ${{ inputs.version }} -a x86_64 -m windows-mono --cm</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Cache</span><span class="nv"> </span><span class="s">Unity&#39;</span>
+<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.unity-cache-pull.outputs.cache-hit != &#39;&#39; }}</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9</span><span class="w"> </span><span class="c1"># v6.1.0</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unity-setup-linux-${{ inputs.version }}-windows-mono</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/runner/Unity/Hub/Editor</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Activate</span><span class="nv"> </span><span class="s">Unity</span><span class="nv"> </span><span class="s">editor&#39;</span>
+<span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{inputs.UNITY_CI_LICENSE_ID != &#39;&#39; }}</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">UNITY_NO_CLI_INVOKED_TELEMETRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">unity auth login --client-id ${{ inputs.UNITY_SERVICE_ACCOUNT_ID }} --client-secret ${{ inputs.UNITY_SERVICE_ACCOUNT_SECRET }}</span>
+
+<span class="w">        </span><span class="no">/home/runner/Unity/Hub/Editor/${{ inputs.version }}/Editor/Unity -quit -batchmode -nographics -serial ${{ inputs.UNITY_CI_LICENSE_ID }} -username ${{ inputs.UNITY_CI_USERNAME }} -password ${{ inputs.UNITY_CI_PASSWORD }}</span>
 </code></pre></div></td></tr></table></div>
       </details>
 </div>
