@@ -6,39 +6,63 @@ inputs:
     description: 'The version of Unity to download'
     required: false
     default: '2019.4.19f1'
-  build-target:
-    description: 'Build target for Unity'
+  UNITY_SERVICE_ACCOUNT_ID:
+    description: 'Unity service account ID'
     required: false
-    default: 'StandaloneWindows64'
-  modules:
-    description: 'Modules to install, use comma separated list'
+  UNITY_SERVICE_ACCOUNT_SECRET:
+    description: 'Unity service account secret'
     required: false
-    default: |
-      windows-server
-      universal-windows-platform
-  r2-storage-bucket:
-    description: 'Storage bucket to use to store the artifacts'
-    required: true
-  r2-api-id:
-    description: 'Account ID for R2'
-    required: true
-  r2-auth-token-id:
-    description: 'ID of the authentication token for R2'
-    required: true
-  r2-auth-token:
-    description: 'Authentication token for R2'
-    required: true
-  r2-region:
-    description: 'Region for the R2 account'
-    required: true
+  UNITY_CI_LICENSE_ID:
+    description: 'Unity CI license ID'
+    required: false
+  UNITY_CI_USERNAME:
+    description: 'Unity CI account username'
+    required: false
+  UNITY_CI_PASSWORD:
+    description: 'Unity CI account password'
+    required: false
 
 runs:
   using: composite
   steps:
-    - name: 'setup Unity'
-      uses: buildalon/unity-setup@v2
+    - name: 'Pull Unity from cache'
+      id: unity-cache-pull
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
-        unity-version: ${{ inputs.version }}
-        build-targets: ${{ inputs.build-target }}
-        modules: ${{ inputs.modules }}
-        cache-installation: true
+        key: unity-setup-linux-${{ inputs.version }}-windows-mono
+        path: /home/runner/Unity/Hub/Editor
+
+    - name: 'Install Unity'
+      shell: bash
+      continue-on-error: true
+      run: |
+        curl -sL https://hub.unity3d.com/linux/keys/public | sudo gpg --dearmor -o /usr/share/keyrings/Unity_Technologies_ApS.gpg
+        sudo tee /etc/apt/sources.list.d/unity-cli.sources <<'EOF'
+        Types: deb
+        URIs: https://hub.unity3d.com/linux/repos/deb
+        Suites: unstable
+        Components: main
+        Signed-By: /usr/share/keyrings/Unity_Technologies_ApS.gpg
+        EOF
+
+        sudo apt-get update && sudo apt-get install -y unity-cli
+
+        unity editors -i
+        unity install ${{ inputs.version }} -a x86_64 -m windows-mono --cm
+
+    - name: 'Cache Unity'
+      if: ${{ steps.unity-cache-pull.outputs.cache-hit != '' }}
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        key: unity-setup-linux-${{ inputs.version }}-windows-mono
+        path: /home/runner/Unity/Hub/Editor
+
+    - name: 'Activate Unity editor'
+      shell: bash
+      if: ${{inputs.UNITY_CI_LICENSE_ID != '' }}
+      env:
+        UNITY_NO_CLI_INVOKED_TELEMETRY: false
+      run: |
+        unity auth login --client-id ${{ inputs.UNITY_SERVICE_ACCOUNT_ID }} --client-secret ${{ inputs.UNITY_SERVICE_ACCOUNT_SECRET }}
+
+        /home/runner/Unity/Hub/Editor/${{ inputs.version }}/Editor/Unity -quit -batchmode -nographics -serial ${{ inputs.UNITY_CI_LICENSE_ID }} -username ${{ inputs.UNITY_CI_USERNAME }} -password ${{ inputs.UNITY_CI_PASSWORD }}
