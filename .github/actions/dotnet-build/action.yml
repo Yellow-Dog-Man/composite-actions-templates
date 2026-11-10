@@ -4,7 +4,7 @@ description: 'Builds a project with .NET.'
 inputs:
   dotnet-version:
     description: '.NET version to use'
-    default: '10.0.x'
+    default: '11.0.x'
     required: false
   dotnet-build-args:
     description: 'Additional args to pass to the .NET build process'

@@ -4,7 +4,7 @@ description: 'Runs the tests of the current Solution.'
 inputs:
   dotnet-version:
     description: 'The .NET version to install.'
-    default: '10.0.x'
+    default: '11.0.x'
     required: false
   dotnet-project-path:
     description: 'Path to the .NET project to test.'
